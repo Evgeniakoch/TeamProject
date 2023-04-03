@@ -57,6 +57,17 @@ public class Player {
     /** Метод принимает жанр и возвращает игру этого жанра, в которую играли больше всего
      Если в игры этого жанра не играли, возвращается null */
     public Game mostPlayerByGenre(String genre) {
-        return null;
+        Game game = null;
+        int time = 0;
+        for (Map.Entry<Game, Integer> entry : playedTime.entrySet()) {
+            Game key = entry.getKey();
+            Integer value = entry.getValue();
+
+            if (key.getGenre().equals(genre) && value > time) {
+                time = value;
+                game = key;
+            }
+        }
+        return game;
     }
 }
