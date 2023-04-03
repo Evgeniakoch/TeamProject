@@ -66,9 +66,5 @@ public class GameStoreTest {
 
 
 
-
-
-
-
     // другие ваши тесты
 }
