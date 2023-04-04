@@ -57,7 +57,7 @@ public class PlayerTest {
 
     }
     @Test
-    public void shouldSumAddPlayedTime() {
+    public void shouldSumPlayedTime() {
         Player player = new Player("Petya");
         GameStore gameStore = new GameStore();
         Game game = new Game("Mario", "arcade", gameStore);
@@ -68,6 +68,20 @@ public class PlayerTest {
 
         assertEquals(expected, actual);
 // Issue
+
+    }
+    @Test
+    public void shouldSumPlayedTimeByGenre() {
+        Player player = new Player("Petya");
+        GameStore gameStore = new GameStore();
+        Game game = new Game("Mario", "arcade", gameStore);
+        player.installGame(game);
+
+        player.play(game, 5);
+        int actual = player.sumGenre("arcade");
+        int expected = 5;
+
+        assertEquals(expected, actual);
 
     }
     @Test
