@@ -67,7 +67,6 @@ public class PlayerTest {
         int expected = 15;
 
         assertEquals(expected, actual);
-// Issue
 
     }
     @Test
@@ -100,25 +99,6 @@ public class PlayerTest {
         assertEquals(expectedTime, actualTime);
 
     }
-
-    @Test
-    public void shouldSumGenreIfOneGame1() {
-        GameStore store = new GameStore();
-        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-
-        Player player = new Player("Petya");
-        player.installGame(game);
-        player.play(game, 3);
-
-        int expected = 3;
-        int actual = player.sumGenre(game.getGenre());
-        assertEquals(expected, actual);
-    }
-
-
-
-
-    // другие ваши тесты
 
     @Test
     public void shouldReturnTimeMostPlayedByGenre() {
