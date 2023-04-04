@@ -45,7 +45,44 @@ public class PlayerTest {
         String actual = player.getName();
         assertEquals(expected, actual);
     }
+    @Test
+    public void shouldThrowRuntimeExceptionIfGameNotInstalled() {
+        Player player = new Player("Petya");
+        GameStore gameStore = new GameStore();
+        Game game = new Game("Mario", "arcade", gameStore);
 
+        player.play(game, 5);
+
+        assertThrows(RuntimeException.class, () -> player.play(game, 5));
+
+    }
+    @Test
+    public void shouldSumPlayedTime() {
+        Player player = new Player("Petya");
+        GameStore gameStore = new GameStore();
+        Game game = new Game("Mario", "arcade", gameStore);
+
+        player.play(game, 5);
+        int actual = player.play(game, 10);
+        int expected = 15;
+
+        assertEquals(expected, actual);
+
+    }
+    @Test
+    public void shouldSumPlayedTimeByGenre() {
+        Player player = new Player("Petya");
+        GameStore gameStore = new GameStore();
+        Game game = new Game("Mario", "arcade", gameStore);
+        player.installGame(game);
+
+        player.play(game, 5);
+        int actual = player.sumGenre("arcade");
+        int expected = 5;
+
+        assertEquals(expected, actual);
+
+    }
     @Test
     public void shouldNotChangePlayedTimeAfterReinstall() {
         Map<Player, List<Game>> playerMap = initPlayer();
@@ -64,25 +101,6 @@ public class PlayerTest {
     }
 
     @Test
-    public void shouldSumGenreIfOneGame1() {
-        GameStore store = new GameStore();
-        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-
-        Player player = new Player("Petya");
-        player.installGame(game);
-        player.play(game, 3);
-
-        int expected = 3;
-        int actual = player.sumGenre(game.getGenre());
-        assertEquals(expected, actual);
-    }
-
-
-
-
-    // другие ваши тесты
-
-    @Test
     public void shouldReturnTimeMostPlayedByGenre() {
         Map<Player, List<Game>> playerMap = initPlayer();
 
@@ -90,7 +108,7 @@ public class PlayerTest {
         List<Game> games = playerMap.get(petya);
 
         Game i = petya.mostPlayerByGenre("strategy");
-        String expected = "warcraft";
+        String expected = "Warcraft";
         String actualName = i.getTitle();
 
         assertEquals(expected, actualName);
