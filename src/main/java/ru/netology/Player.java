@@ -77,7 +77,7 @@ public class Player {
                 // проверяем на жанр
                 if (playedTime.get(game) > sum) {
                     // ищем максимальное значение
-                    sum = playedTime.get(game);
+                    sum = sum + playedTime.get(game);
                     gameOfGenrePlayedMost = game;
                 }
             }
