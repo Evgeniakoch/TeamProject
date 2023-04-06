@@ -30,7 +30,7 @@ public class GameStore {
      * если игра есть и false иначе
      */
     public boolean containsGame(Game game) {
-        for (int i = 1; i < games.size(); i++) {
+        for (int i = 1; i <= games.size(); i++) {
             if (games.get(i - 1).equals(game)) {
                 return true;
             }
@@ -45,7 +45,9 @@ public class GameStore {
      */
     public void addPlayTime(String playerName, int hours) {
         if (playedTime.containsKey(playerName)) {
-            playedTime.put(playerName, playedTime.get(playerName));
+            int pTime = playedTime.get(playerName);
+            int resultTime = hours + pTime;
+            playedTime.put(playerName, resultTime);
         } else {
             playedTime.put(playerName, hours);
         }
@@ -73,6 +75,10 @@ public class GameStore {
      * за играми этого каталога
      */
     public int getSumPlayedTime() {
-        return 0;
+        int time = 0;
+        for(String player : playedTime.keySet()) {
+            time = time + playedTime.get(player);
+        }
+        return time;
     }
 }
