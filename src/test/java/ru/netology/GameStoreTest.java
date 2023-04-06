@@ -91,7 +91,7 @@ public class GameStoreTest {
         player2.play(game, 4);
 
         String[] expected = {"Alex"};
-        String[] actual = store.getMostPlayer();
+        String[] actual = new String[]{store.getMostPlayer()};
         assertArrayEquals(expected, actual);
     }
 
@@ -101,7 +101,7 @@ public class GameStoreTest {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         String[] expected = null;
-        String[] actual = store.getMostPlayer();
+        String[] actual = new String[]{store.getMostPlayer()};
         assertArrayEquals(expected, actual);
     }
 

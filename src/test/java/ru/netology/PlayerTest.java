@@ -85,7 +85,7 @@ public class PlayerTest {
 
     }
     @Test
-    public void shouldNotChangePlayedTimeAfterReinstall() {
+    public void shouldNotChangePlayedTimeAfterReinstall() { //
         Map<Player, List<Game>> playerMap = initPlayer();
 
         Player petya = playerMap.keySet().iterator().next();
