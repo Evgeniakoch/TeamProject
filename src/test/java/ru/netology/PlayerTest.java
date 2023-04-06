@@ -51,7 +51,7 @@ public class PlayerTest {
         GameStore gameStore = new GameStore();
         Game game = new Game("Mario", "arcade", gameStore);
 
-        player.play(game, 5);
+//        player.play(game, 5);
 
         assertThrows(RuntimeException.class, () -> player.play(game, 5));
 
@@ -61,6 +61,7 @@ public class PlayerTest {
         Player player = new Player("Petya");
         GameStore gameStore = new GameStore();
         Game game = new Game("Mario", "arcade", gameStore);
+        player.installGame(game);
 
         player.play(game, 5);
         int actual = player.play(game, 10);
