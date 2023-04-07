@@ -1,6 +1,7 @@
 package ru.netology;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class GameStoreTest {
@@ -32,6 +33,7 @@ public class GameStoreTest {
         assertEquals(expected, actual);
 
     }
+
     @Test
     public void shouldContainsGame() {
 
@@ -45,7 +47,19 @@ public class GameStoreTest {
     }
 
     @Test
-    public void shouldSumPlayedTime1() {
+    public void notContainsGame() {
+
+        GameStore store = new GameStore();
+        Game game = null;
+
+        Boolean expected = false;
+        Boolean actual = store.containsGame(game);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSumPlayedTime() {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
@@ -63,6 +77,34 @@ public class GameStoreTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldBestPlayer() {
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+
+        Player player1 = new Player("Elena");
+        player1.installGame(game);
+        player1.play(game, 3);
+
+        Player player2 = new Player("Alex");
+        player2.installGame(game);
+        player2.play(game, 4);
+
+
+        String[] expected = {"Alex"};
+        String[] actual = new String[]{store.getMostPlayer()};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNullPlayer() {
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+
+        String[] expected = null;
+        String[] actual = new String[]{store.getMostPlayer()};
+        assertArrayEquals(expected, actual);
+    }
 
 
 
