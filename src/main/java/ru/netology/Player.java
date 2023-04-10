@@ -29,11 +29,10 @@ public class Player {
     public void installGame(Game game) {
         if (playedTime.containsKey(game)) {
             if (game == game)
-            playedTime.put(game, playedTime.get(game));
+                playedTime.put(game, playedTime.get(game));
         } else
             playedTime.put(game, 0);
     }
-
 
 
     /**
@@ -75,6 +74,7 @@ public class Player {
      * Если в игры этого жанра не играли, возвращается null
      */
     public Game mostPlayerByGenre(String genre) {
+
         int sum = 0;
         Game gameOfGenrePlayedMost = null;
         // если жанра нет вернем null
@@ -90,6 +90,7 @@ public class Player {
             }
         }
         return gameOfGenrePlayedMost;
+
     }
 
     public Map<Game, Integer> getPlayedTime() {

@@ -1,6 +1,7 @@
 package ru.netology;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class PlayerTest {
         String actual = player.getName();
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldThrowRuntimeExceptionIfGameNotInstalled() {
         Player player = new Player("Petya");
@@ -54,8 +56,8 @@ public class PlayerTest {
 //        player.play(game, 5);
 
         assertThrows(RuntimeException.class, () -> player.play(game, 5));
-
     }
+
     @Test
     public void shouldSumPlayedTime() {
         Player player = new Player("Petya");
@@ -68,8 +70,8 @@ public class PlayerTest {
         int expected = 15;
 
         assertEquals(expected, actual);
-
     }
+
     @Test
     public void shouldSumPlayedTimeByGenre() {
         Player player = new Player("Petya");
@@ -82,8 +84,8 @@ public class PlayerTest {
         int expected = 5;
 
         assertEquals(expected, actual);
-
     }
+
     @Test
     public void shouldNotChangePlayedTimeAfterReinstall() { //
         Map<Player, List<Game>> playerMap = initPlayer();
