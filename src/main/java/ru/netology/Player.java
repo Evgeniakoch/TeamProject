@@ -1,6 +1,7 @@
 package ru.netology;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Player {
@@ -26,8 +27,14 @@ public class Player {
      * если игра уже была, никаких изменений происходить не должно
      */
     public void installGame(Game game) {
-        playedTime.put(game, 0);
+        if (playedTime.containsKey(game)) {
+            if (game == game)
+            playedTime.put(game, playedTime.get(game));
+        } else
+            playedTime.put(game, 0);
     }
+
+
 
     /**
      * игрок играет в игру game на протяжении hours часов
@@ -83,5 +90,9 @@ public class Player {
             }
         }
         return gameOfGenrePlayedMost;
+    }
+
+    public Map<Game, Integer> getPlayedTime() {
+        return playedTime;
     }
 }

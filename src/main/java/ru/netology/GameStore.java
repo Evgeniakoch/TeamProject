@@ -67,7 +67,7 @@ public class GameStore {
                 bestPlayer = playerName;
             }
         }
-        return new String[]{bestPlayer};
+        return bestPlayer;
     }
 
     /**
